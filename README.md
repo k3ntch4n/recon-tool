@@ -17,6 +17,7 @@ Cet outil permet d'automatiser la reconnaissance d'une cible en utilisant plusie
 
 <h2 style="font-size: 18px;">🚀 Prérequis  </h2>
 Avant de lancer ce script, vous devez avoir installé les outils précédents sur votre machine, si ce n'est pas le cas utilisez les commandes suivantes :  
+
   ```bash
    sudo apt update
    sudo apt install whois dig nmap wafw00f gobuster nikto whatweb
@@ -31,8 +32,9 @@ Clonez ce projet ou téléchargez le fichier recon_script.py.
 Exécutez le script avec Python 3 en utilisant la commande suivante :  
  ```bash
 python3 recon_script.py
-Le script vous demandera ensuite d'entrer une adresse IP ou un nom de domaine.
 ```
+Le script vous demandera ensuite d'entrer une adresse IP ou un nom de domaine.
+
 
 <h2 style="font-size: 18px;">💻 Exemple d'exécution </h2> 
 
