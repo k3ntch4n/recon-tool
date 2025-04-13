@@ -1,60 +1,57 @@
-# 🛠️ Recon Automation Tool
+🛠️ Outil d'automatisation de reconnaissance (RECON)
+Cet outil permet d'automatiser la reconnaissance d'une cible en utilisant plusieurs outils populaires de cybersécurité et de reconnaissance. Il peut scanner à la fois des adresses IP et des domaines pour récupérer des informations détaillées sur la cible.
 
-Un outil Python d'automatisation pour la reconnaissance réseau, incluant des outils populaires comme Nmap, Wafw00f, Gobuster, Nikto, et CORScanner.
+🚀 Prérequis
+Outils nécessaires
+Avant de lancer ce script, vous devez avoir installé les outils suivants sur votre machine :
+   sudo apt update
+   sudo apt install whois dig nmap wafw00f gobuster nikto whatweb
 
-## 🚀 Fonctionnalités
+🖥️ Installation et utilisation
 
-- **Nmap** : Scan de services et versions sur la cible.
-- **Wafw00f** : Détection du pare-feu d'application web.
-- **CORScanner** : Vérification des vulnérabilités CORS.
-- **Gobuster** : Bruteforce des répertoires sur la cible.
-- **Nikto** : Scan des vulnérabilités web courantes.
+Étapes pour exécuter le script
+Clonez ce projet ou téléchargez le fichier recon_script.py.
 
-## 🛠️ Installer les outils externes
+Exécutez le script avec Python 3 en utilisant la commande suivante :
 
-Certains outils utilisés par ce script doivent être installés manuellement.
+python3 recon_script.py
+Le script vous demandera ensuite d'entrer une adresse IP ou un nom de domaine.
 
-### Outils à installer :
+💻 Exemple d'exécution
 
-1. **Nmap** : Utilisé pour l'analyse des services et des versions.
-   - Installation sur **Ubuntu** :
-     ```bash
-     sudo apt-get install nmap
-     ```
+   Exemple 1 : Scan d'un domaine
+      python3 recon_script.py
+      Entrez l'adresse IP ou le domaine de la cible : example.com
    
-2. **Wafw00f** : Utilisé pour détecter le pare-feu d'application web.
-   - Installation via `pip` :
-     ```bash
-     pip install wafw00f
-     ```
+   Exemple 2 : Scan d'une adresse IP
+      python3 recon_script.py
+      Entrez l'adresse IP ou le domaine de la cible : 8.8.8.8
    
-3. **CORScanner** : Outil pour scanner les vulnérabilités CORS.
-   - Clonez le projet GitHub :
-     ```bash
-     git clone https://github.com/chenjj/CORScanner.git
-     cd cors-scanner
-     sudo pip install -r requirements.txt
-     sudo pip install corscanner
-     ```
+   📊 Résultats
+   À la fin du scan, un rapport HTML sera généré dans le répertoire recon_results/, contenant toutes les informations récupérées sur la cible. Le rapport s'appelle rapport_recon.html.
 
-4. **Gobuster** : Utilisé pour le bruteforce des répertoires.
-   - Installation sur **Ubuntu** :
-     ```bash
-     sudo apt-get install gobuster
-     ```
+🧰 Outils utilisés dans ce script
+Voici un aperçu des outils qui seront utilisés pour scanner et récupérer des informations sur la cible :
 
-5. **Nikto** : Utilisé pour scanner les vulnérabilités web.
-   - Installation via **GitHub** :
-     ```bash
-     git clone https://github.com/sullo/nikto.git
-     cd nikto
-     perl nikto.pl
-     ```
+WHOIS 🧐 : Obtient les informations d'enregistrement du domaine ou de l'adresse IP, telles que le registrar, les contacts, etc.
 
-## 🛠️ Installation du script `recontool.py`
+DIG & NSLOOKUP 🔍 : Effectuent des requêtes DNS pour obtenir des informations détaillées sur l'adresse cible.
 
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/kentch4n/recon-tool.git
-   cd recon-tool
-   python3 recontool.py 
+Nmap 🕵️‍♂️ : Effectue un scan de ports avec détection des services et versions.
+
+Wafw00f 🧱 : Détecte la présence d'un pare-feu applicatif web (WAF) pour identifier les protections de la cible.
+
+Gobuster 💣 : Effectue une recherche brute de répertoires sur le site web cible.
+
+Nikto 🔒 : Scanne le site à la recherche de vulnérabilités connues et de mauvaises configurations.
+
+WhatWeb 🌐 : Identifie les technologies utilisées sur le site web de la cible.
+
+Wappalyzer 📊 : Identifie également les technologies web utilisées par le site cible.
+
+📑 Rapport HTML
+Le rapport généré dans le répertoire recon_results/ présente les résultats de chaque outil sous forme de sections repliables pour une meilleure lisibilité.
+
+
+📜 Note
+Le script utilise des outils en ligne de commande, donc assurez-vous que vous avez les bonnes permissions pour les exécuter sur votre système.
