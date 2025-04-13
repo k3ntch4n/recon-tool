@@ -1,20 +1,26 @@
 import subprocess
 import os
 from colorama import Fore, Style, init
+import threading
+import time
 
-# Initialiser Colorama
 init(autoreset=True)
 
 def run_command(command):
-    process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
-    output, error = process.communicate()
-    return output.decode('utf-8')
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, shell=True)
+    output, _ = process.communicate()
+    return output.decode('utf-8', errors='ignore')
 
-def save_output(filename, content):
-    with open(filename, "w") as f:
-        f.write(content)
+def append_html_section(file_path, title, content):
+    with open(file_path, "a") as f:
+        f.write(f"""
+<details>
+  <summary><strong>{title}</strong></summary>
+  <pre>{content}</pre>
+</details>
+""")
 
-# Affichage du logo avec couleurs
+# ASCII & intro
 print(Fore.GREEN + r"""
  ____                        _____           _ 
 |  _ \ ___  ___ ___  _ __   |_   _|__   ___ | |
@@ -24,11 +30,10 @@ print(Fore.GREEN + r"""
 """ + Style.RESET_ALL)
 
 print(Fore.YELLOW + "[*] Initialisation...")
-print(Fore.YELLOW + "[*] Chargement des modules...")
 print(Fore.CYAN + "[*] Démarrage de la reconnaissance...")
 print(Fore.GREEN + "[*] Bonne chasse !")
 
-# Dessin amusant
+# Petit dessin
 print(Fore.MAGENTA + r"""
         .--.
        |o_o |
@@ -39,49 +44,96 @@ print(Fore.MAGENTA + r"""
     \___)=(___/
 """)
 
-# Demander la cible
+# Cible
 target = input("Entrez l'adresse IP ou le domaine de la cible : ")
 
-# Définir le répertoire de sortie
 output_dir = "recon_results"
-
-# Créer le répertoire s'il n'existe pas
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
-print("Démarrage de la reconnaissance...")
+report_file = os.path.join(output_dir, "rapport_recon.html")
 
-# Nmap
-print("Exécution de Nmap...")
-nmap_output = run_command(f"nmap -A -p- -sV -sC {target}")
-save_output(f"{output_dir}/nmap_results.txt", nmap_output)
+with open(report_file, "w") as f:
+    f.write(f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rapport Reconnaissance - {target}</title>
+    <style>
+        body {{
+            background-color: #1e1e1e;
+            color: #cfcfcf;
+            font-family: monospace;
+            padding: 20px;
+        }}
+        h1 {{
+            color: #00ff99;
+            border-bottom: 2px solid #00ff99;
+            padding-bottom: 5px;
+        }}
+        summary {{
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #61dafb;
+            margin-top: 20px;
+        }}
+        pre {{
+            background-color: #2d2d2d;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }}
+        details {{
+            margin-bottom: 15px;
+        }}
+    </style>
+</head>
+<body>
+    <h1>Rapport de Reconnaissance</h1>
+    <p><strong>Cible :</strong> {target}</p>
+""")
 
-# Wafw00f
-print("Exécution de Wafw00f...")
-waf_url = "http://{target}"
-wafw00f_output = run_command(f"wafw00f {waf_url}")
-save_output(f"{output_dir}/wafw00f_results.txt", wafw00f_output)
+# Phase 1 - Infos DNS / WHOIS
+print("[*] WHOIS...")
+whois_output = run_command(f"whois {target}")
+append_html_section(report_file, "WHOIS", whois_output)
 
-# CORScanner
-print("Exécution de CORScanner...")
+print("[*] DIG...")
+dig_output = run_command(f"dig {target}")
+append_html_section(report_file, "DIG", dig_output)
 
-corscanner_path = input("entrez le chemin pour démarrer CORScanner:")  # Chemin relatif vers le script
+print("[*] NSLOOKUP...")
+nslookup_output = run_command(f"nslookup {target}")
+append_html_section(report_file, "NSLOOKUP", nslookup_output)
 
-if os.path.exists(corscanner_path):
-    corscanner_output = run_command(f"python3 {corscanner_path} -u http://{target}")
-    save_output(f"{output_dir}/corscanner_results.txt", corscanner_output)
-else:
-    print(f"{Fore.RED}[!] Le fichier {corscanner_path} est introuvable. Assurez-vous que CORScanner est cloné dans ./cors-scanner/")
+# Phase 2 - Scan réseau / web
+print("[*] Nmap...")
+nmap_output = run_command(f"nmap -T4 -A -p- -sV -sC {target}")
+append_html_section(report_file, "Nmap", nmap_output)
 
+print("[*] Wafw00f...")
+waf_output = run_command(f"wafw00f http://{target}")
+append_html_section(report_file, "Wafw00f", waf_output)
 
-# Gobuster
-print("Exécution de Gobuster...")
+print("[*] Gobuster...")
 gobuster_output = run_command(f"gobuster dir -u http://{target} -w /usr/share/wordlists/dirb/common.txt")
-save_output(f"{output_dir}/gobuster_results.txt", gobuster_output)
+append_html_section(report_file, "Gobuster", gobuster_output)
 
-# Nikto
-print("Exécution de Nikto...")
+print("[*] Nikto...")
 nikto_output = run_command(f"nikto -h http://{target}")
-save_output(f"{output_dir}/nikto_results.txt", nikto_output)
+append_html_section(report_file, "Nikto", nikto_output)
 
-print(f"Reconnaissance terminée. Les résultats sont sauvegardés dans le dossier {output_dir}")
+print("[*] WhatWeb...")
+whatweb_output = run_command(f"whatweb http://{target}")
+append_html_section(report_file, "WhatWeb", whatweb_output)
+
+print("[*] Wappalyzer...")
+wappalyzer_output = run_command(f"wappalyzer --scan-type FULL -i http://{target}")
+append_html_section(report_file, "Wappalyzer", wappalyzer_output)
+
+# Fin HTML
+with open(report_file, "a") as f:
+    f.write("</body></html>")
+
+print(Fore.GREEN + f"\n[✔] Rapport HTML généré : {report_file}")
