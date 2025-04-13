@@ -5,14 +5,14 @@ Cet outil permet d'automatiser la reconnaissance d'une cible en utilisant plusie
 
 🧰 **Outils utilisés dans ce script**
 
-**WHOIS** 🧐 : Obtient les informations d'enregistrement du domaine ou de l'adresse IP, telles que le registrar, les contacts, etc.
-**DIG & NSLOOKUP** 🔍 : Effectuent des requêtes DNS pour obtenir des informations détaillées sur l'adresse cible.
-**Nmap** 🕵️‍♂️ : Effectue un scan de ports avec détection des services et versions.
-**Wafw00f** 🧱 : Détecte la présence d'un pare-feu applicatif web (WAF) pour identifier les protections de la cible.
-**Gobuster** 💣 : Effectue une recherche brute de répertoires sur le site web cible.
-**Nikto** 🔒 : Scanne le site à la recherche de vulnérabilités connues et de mauvaises configurations.
-**WhatWeb** 🌐 : Identifie les technologies utilisées sur le site web de la cible.
-**Wappalyzer** 📊 : Identifie également les technologies web utilisées par le site cible.
+**WHOIS** 🧐 : Obtient les informations d'enregistrement du domaine ou de l'adresse IP, telles que le registrar, les contacts, etc.  
+**DIG & NSLOOKUP** 🔍 : Effectuent des requêtes DNS pour obtenir des informations détaillées sur l'adresse cible.  
+**Nmap** 🕵️‍♂️ : Effectue un scan de ports avec détection des services et versions.  
+**Wafw00f** 🧱 : Détecte la présence d'un pare-feu applicatif web (WAF) pour identifier les protections de la cible.  
+**Gobuster** 💣 : Effectue une recherche brute de répertoires sur le site web cible.  
+**Nikto** 🔒 : Scanne le site à la recherche de vulnérabilités connues et de mauvaises configurations.  
+**WhatWeb** 🌐 : Identifie les technologies utilisées sur le site web de la cible.  
+**Wappalyzer** 📊 : Identifie également les technologies web utilisées par le site cible.        
 
 
 🚀 **Prérequis**
