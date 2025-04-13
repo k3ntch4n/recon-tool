@@ -31,9 +31,10 @@ Certains outils utilisés par ce script doivent être installés manuellement.
 3. **CORScanner** : Outil pour scanner les vulnérabilités CORS.
    - Clonez le projet GitHub :
      ```bash
-     git clone https://github.com/EdOverflow/cors-scanner
+     git clone https://github.com/chenjj/CORScanner.git
      cd cors-scanner
-     python3 setup.py install
+     sudo pip install -r requirements.txt
+     sudo pip install corscanner
      ```
 
 4. **Gobuster** : Utilisé pour le bruteforce des répertoires.
