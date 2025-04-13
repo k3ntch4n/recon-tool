@@ -51,6 +51,5 @@ Le script vous demandera ensuite d'entrer une adresse IP ou un nom de domaine.
    <h2 style="font-size: 18px;">📊 Résultats  </h2>
    À la fin du scan, un rapport HTML sera généré dans le répertoire recon_results/, contenant toutes les informations récupérées sur la cible. Le rapport s'appelle rapport_recon.html.  
   
-  
-📜 Note  
-Le script utilise des outils en ligne de commande, donc assurez-vous que vous avez les bonnes permissions pour les exécuter sur votre système.
+![Screenshot_2025-04-13_16_45_14](https://github.com/user-attachments/assets/1d7c0a3b-2a33-4b6f-9372-3b956b697171)  
+![Screenshot_2025-04-13_12_06_55](https://github.com/user-attachments/assets/27683bd9-2c06-4b69-92a1-e4630f1cb4c4)
