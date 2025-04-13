@@ -58,7 +58,7 @@ save_output(f"{output_dir}/nmap_results.txt", nmap_output)
 
 # Wafw00f
 print("Exécution de Wafw00f...")
-waf_url = f"http://{waf_host}"
+waf_url = "http://{target}"
 wafw00f_output = run_command(f"wafw00f {waf_url}")
 save_output(f"{output_dir}/wafw00f_results.txt", wafw00f_output)
 
