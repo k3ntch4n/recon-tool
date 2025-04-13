@@ -65,7 +65,7 @@ save_output(f"{output_dir}/wafw00f_results.txt", wafw00f_output)
 # CORScanner
 print("Exécution de CORScanner...")
 
-corscanner_path = "./cors-scanner/cors_scan.py"  # Chemin relatif vers le script
+corscanner_path = input("entrez le chemin pour démarrer CORScanner:")  # Chemin relatif vers le script
 
 if os.path.exists(corscanner_path):
     corscanner_output = run_command(f"python3 {corscanner_path} -u http://{target}")
