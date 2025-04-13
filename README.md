@@ -1,9 +1,9 @@
-🛠️ <h1 style="font-size: 22px;"> RECON TOOL </h1>
+<h1 style="font-size: 22px;">🛠️ RECON TOOL </h1>
 
 Cet outil permet d'automatiser la reconnaissance d'une cible en utilisant plusieurs outils populaires de cybersécurité et de reconnaissance. Il peut scanner à la fois des adresses IP et des domaines pour récupérer des informations détaillées sur la cible.  
 
 
-🧰 **Outils utilisés dans ce script**  
+🧰 <h2 style="font-size: 18px;">**Outils utilisés dans ce script**  </h2>
   
 **WHOIS** 🧐 : Obtient les informations d'enregistrement du domaine ou de l'adresse IP, telles que le registrar, les contacts, etc.  
 **DIG & NSLOOKUP** 🔍 : Effectuent des requêtes DNS pour obtenir des informations détaillées sur l'adresse cible.  
@@ -15,7 +15,7 @@ Cet outil permet d'automatiser la reconnaissance d'une cible en utilisant plusie
 **Wappalyzer** 📊 : Identifie également les technologies web utilisées par le site cible.        
 
 
-🚀 **Prérequis**  
+🚀 <h2 style="font-size: 18px;">**Prérequis**  </h2!>
 Avant de lancer ce script, vous devez avoir installé les outils précédents sur votre machine, si ce n'est pas le cas utilisez les commandes suivantes :  
   ```bash
    sudo apt update
@@ -23,7 +23,7 @@ Avant de lancer ce script, vous devez avoir installé les outils précédents su
   ```
 
 
-🖥️ **Installation et utilisation**  
+🖥️ <h2 style="font-size: 18px;">**Installation et utilisation**  </h2>
   
 Étapes pour exécuter le script
 Clonez ce projet ou téléchargez le fichier recon_script.py.
@@ -34,7 +34,7 @@ python3 recon_script.py
 Le script vous demandera ensuite d'entrer une adresse IP ou un nom de domaine.
 ```
 
-💻 **Exemple d'exécution**  
+💻 <h2 style="font-size: 18px;">**Exemple d'exécution** </h2> 
 
    Exemple 1 : Scan d'un domaine
       
@@ -46,7 +46,7 @@ Le script vous demandera ensuite d'entrer une adresse IP ou un nom de domaine.
       python3 recon_script.py
       Entrez l'adresse IP ou le domaine de la cible : 8.8.8.8
    
-   📊 **Résultats**  
+   📊 <h2 style="font-size: 18px;">**Résultats**  </h2>
    À la fin du scan, un rapport HTML sera généré dans le répertoire recon_results/, contenant toutes les informations récupérées sur la cible. Le rapport s'appelle rapport_recon.html.
 
 
