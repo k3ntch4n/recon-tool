@@ -64,8 +64,15 @@ save_output(f"{output_dir}/wafw00f_results.txt", wafw00f_output)
 
 # CORScanner
 print("Exécution de CORScanner...")
-corscanner_output = run_command(f"python3 cors_scan.py -u http://{target}")
-save_output(f"{output_dir}/corscanner_results.txt", corscanner_output)
+
+corscanner_path = "./cors-scanner/cors_scan.py"  # Chemin relatif vers le script
+
+if os.path.exists(corscanner_path):
+    corscanner_output = run_command(f"python3 {corscanner_path} -u http://{target}")
+    save_output(f"{output_dir}/corscanner_results.txt", corscanner_output)
+else:
+    print(f"{Fore.RED}[!] Le fichier {corscanner_path} est introuvable. Assurez-vous que CORScanner est cloné dans ./cors-scanner/")
+
 
 # Gobuster
 print("Exécution de Gobuster...")
