@@ -49,7 +49,7 @@ Le script vous demandera ensuite d'entrer une adresse IP ou un nom de domaine.
       Entrez l'adresse IP ou le domaine de la cible : 8.8.8.8
    
    <h2 style="font-size: 18px;">📊 Résultats  </h2>
-   À la fin du scan, un rapport HTML sera généré dans le répertoire recon_results/, contenant toutes les informations récupérées sur la cible. Le rapport s'appelle rapport_recon.html. 
+   À la fin du scan, un rapport HTML sera généré dans le répertoire recon_results/, contenant toutes les informations récupérées sur la cible. Le rapport s'appelle rapport_recon.html.  
  
  
 ![Screenshot_2025-04-13_12_06_555](https://github.com/user-attachments/assets/b2ec6594-a398-4675-a222-4fed8fb83700) 
